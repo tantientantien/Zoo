@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace NguyenTanTien
 {
-    public class Lion : Animal
+    public class Lion : Animal, ICarnivore
     {
-        public Lion(string name, ushort age) : base(name, age, "Lion") { }
+        public Lion(string name, ushort age) : base(name, age, "Lion") {}
 
-        public void hunt()
+        public void Hunt()
         {
             Console.WriteLine($"{getName()} is hunting...");
         }
