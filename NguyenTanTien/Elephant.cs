@@ -10,7 +10,7 @@ namespace NguyenTanTien
     {
         public Elephant(string Name, ushort Age) : base(Name, Age, "Elephant"){}
 
-        public void EatLeaves()
+        public void eatLeaves()
         {
             Console.WriteLine($"{getName()} is eating leaves...");
         }

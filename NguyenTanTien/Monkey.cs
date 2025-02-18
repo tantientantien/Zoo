@@ -10,7 +10,7 @@ namespace NguyenTanTien
     {
         public Monkey(string Name, ushort Age) : base(Name, Age, "Monkey"){}
 
-        public void ClimbTree()
+        public void climbTree()
         {
             Console.WriteLine($"{getName()} is climbing a tree...");
         }
