@@ -27,6 +27,9 @@ namespace NguyenTanTien
             Console.WriteLine();
 
             animal = new Monkey("Alice", 5);
+
+            animal.setAge(0);
+
             Console.WriteLine(animal.showInfo());
             animal.makeSound();
             ((Monkey)animal).ClimbTree();

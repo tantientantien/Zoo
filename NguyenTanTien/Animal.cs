@@ -16,14 +16,14 @@ namespace NguyenTanTien
         protected Animal(string name, ushort age, string species)
         {
             this.name = string.IsNullOrEmpty(name) ? "Unknown" : name;
-            this.age = age;
+            this.age = (age < 1) ? (ushort)1 : age;
             this.species = species;
         }
 
         public void setName(string name) => this.name = string.IsNullOrEmpty(name) ? this.name : name;
         public string getName() => name;
 
-        public void setAge(ushort age) => this.age = age;
+        public void setAge(ushort age) => this.age = (age < 1) ? (ushort)1 : age;
         public ushort getAge() => age;
 
         public abstract void makeSound();
