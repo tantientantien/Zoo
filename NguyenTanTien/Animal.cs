@@ -26,9 +26,20 @@ namespace NguyenTanTien
         public void setAge(ushort age) => this.age = (age < 1) ? (ushort)1 : age;
         public ushort getAge() => age;
 
+        public string getSpecies() => species;
+
+
         public abstract void makeSound();
 
         public virtual string showInfo() => $"Name: {name}, Age: {age}, Species: {species}";
+    }
+
+    public static class AnimalExtension
+    {
+        public static string getAnimalType(this Animal animal)
+        {
+            return animal?.GetType().Name ?? "Unknown";
+        }
     }
 
 }
