@@ -8,7 +8,12 @@ namespace NguyenTanTien
 {
     public class Elephant : Animal
     {
-        public Elephant(string Name, byte Age, string Species) : base(Name, Age, "Elephant"){}
+        public Elephant(string Name, ushort Age) : base(Name, Age, "Elephant"){}
+
+        public void EatLeaves()
+        {
+            Console.WriteLine($"{getName()} is eating leaves...");
+        }
 
         public override void makeSound()
         {

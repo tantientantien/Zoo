@@ -8,7 +8,12 @@ namespace NguyenTanTien
 {
     public class Monkey : Animal
     {
-        public Monkey(string Name, byte Age, string Species) : base(Name, Age, "Monkey"){}
+        public Monkey(string Name, ushort Age) : base(Name, Age, "Monkey"){}
+
+        public void ClimbTree()
+        {
+            Console.WriteLine($"{getName()} is climbing a tree...");
+        }
 
         public override void makeSound()
         {

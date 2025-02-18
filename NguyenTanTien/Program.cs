@@ -10,17 +10,26 @@ namespace NguyenTanTien
     {
         static void Main(string[] args)
         {
-            Animal animal = new Lion("Bob", 10, "Lion");
-            Console.WriteLine(animal.showInfo());
-            animal.makeSound();
+            Animal animal;
 
-            animal = new Elephant("Cookie", 12, "Elephant");
+            animal = new Lion("Bob", 10);
             Console.WriteLine(animal.showInfo());
             animal.makeSound();
+            ((Lion)animal).hunt();
 
-            animal = new Monkey("alice", 5, "Monkey");
+            Console.WriteLine();
+
+            animal = new Elephant("Cookie", 12);
             Console.WriteLine(animal.showInfo());
             animal.makeSound();
+            ((Elephant)animal).EatLeaves();
+
+            Console.WriteLine();
+
+            animal = new Monkey("Alice", 5);
+            Console.WriteLine(animal.showInfo());
+            animal.makeSound();
+            ((Monkey)animal).ClimbTree();
         }
     }
 }

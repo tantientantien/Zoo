@@ -10,44 +10,25 @@ namespace NguyenTanTien
     public abstract class Animal
     {
         private string name;
-        private byte age;
+        private ushort age;
         protected string species;
 
-        public void SetName(string Name)
+        protected Animal(string name, ushort age, string species)
         {
-            this.name = string.IsNullOrEmpty(Name) ? this.name : Name;
+            this.name = string.IsNullOrEmpty(name) ? "Unknown" : name;
+            this.age = age;
+            this.species = species;
         }
 
+        public void setName(string name) => this.name = string.IsNullOrEmpty(name) ? this.name : name;
+        public string getName() => name;
 
-        public string GetName(string Name)
-        {
-            return name;
-        }
-
-        public void SetAge(byte Age)
-        {
-            this.age = (age <= 0) ? this.age : Age;
-        }
-
-        public byte GetAge()
-        {
-            return age;
-        }
-
-
-        protected Animal(string Name, byte Age, string Species)
-        {
-            this.name = Name;
-            this.age = Age;
-            this.species = Species;
-        }
+        public void setAge(ushort age) => this.age = age;
+        public ushort getAge() => age;
 
         public abstract void makeSound();
 
-        public string showInfo()
-        {
-            return $"Name: {name}, Age: {age}, Species: {species}";
-        }
+        public virtual string showInfo() => $"Name: {name}, Age: {age}, Species: {species}";
     }
 
 }

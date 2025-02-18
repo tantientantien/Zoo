@@ -8,12 +8,16 @@ namespace NguyenTanTien
 {
     public class Lion : Animal
     {
-        public Lion(string Name, byte Age, string Species) : base(Name, Age, "Lion"){}
+        public Lion(string name, ushort age) : base(name, age, "Lion") { }
+
+        public void hunt()
+        {
+            Console.WriteLine($"{getName()} is hunting...");
+        }
 
         public override void makeSound()
         {
-            Console.WriteLine("gru-gru");
+            Console.WriteLine("Gru-gru");
         }
-
     }
 }
