@@ -7,9 +7,16 @@ using System.Threading.Tasks;
 
 namespace NguyenTanTien
 {
+    public class AddEventArgs : EventArgs
+    {
+        public string Notification { get; set; }
+    }
+
     public class Zoo
     {
         public List<Animal> animals { get; private set; } = new List<Animal>();
+
+        public event EventHandler<AddEventArgs> addNewAnimal;
 
         public void addAnimal(Animal animal)
         {
@@ -17,8 +24,16 @@ namespace NguyenTanTien
                 throw new ArgumentNullException(nameof(animal), "Animal cannot be null");
 
             animals.Add(animal);
+            OnAnimalAdded(animal);
         }
 
+        protected virtual void OnAnimalAdded(Animal animal)
+        {
+            addNewAnimal?.Invoke(this, new AddEventArgs
+            {
+                Notification = $"A new animal was added: {animal.getName()} ({animal.getSpecies()})",
+            });
+        }
 
         public List<Animal> getAnimals(int? age = null, string species = null)
         {
@@ -26,6 +41,19 @@ namespace NguyenTanTien
                 (!age.HasValue || a.getAge() >= age.Value) &&
                 (string.IsNullOrEmpty(species) || a.getSpecies().Equals(species, StringComparison.OrdinalIgnoreCase))
             ).ToList();
+        }
+    }
+
+    public class ZooMonitor
+    {
+        public void Subscribe(Zoo zoo)
+        {
+            zoo.addNewAnimal += OnAnimalAdded;
+        }
+
+        private void OnAnimalAdded(object sender, AddEventArgs e)
+        {
+            Console.WriteLine(e.Notification);
         }
     }
 }

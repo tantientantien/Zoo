@@ -33,6 +33,8 @@ namespace NguyenTanTien
             //((Monkey)animal).climbTree();
 
             Zoo zoo = new Zoo();
+            ZooMonitor monitor = new ZooMonitor();
+            monitor.Subscribe(zoo);
 
 
             zoo.addAnimal(new Lion("bob", 12));
@@ -45,6 +47,7 @@ namespace NguyenTanTien
             foreach (var animal in result)
             {
                 Console.WriteLine(animal.showInfo());
+                Console.WriteLine(animal.getAnimalType());
             }
         }
     }
