@@ -15,7 +15,7 @@ namespace NguyenTanTien
 
         public void SetName(string Name)
         {
-            this.name = string.IsNullOrEmpty(Name) ? Name : this.name;
+            this.name = string.IsNullOrEmpty(Name) ? this.name : Name;
         }
 
 
@@ -26,7 +26,7 @@ namespace NguyenTanTien
 
         public void SetAge(byte Age)
         {
-            this.age = (age > 0) ? age : this.age;
+            this.age = (age <= 0) ? this.age : Age;
         }
 
         public byte GetAge()

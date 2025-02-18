@@ -19,6 +19,8 @@ namespace NguyenTanTien
             animal.makeSound();
 
             animal = new Monkey("alice", 5, "Monkey");
+
+            animal.SetName("bov");
             Console.WriteLine(animal.showInfo());
             animal.makeSound();
         }
