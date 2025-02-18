@@ -8,7 +8,7 @@ namespace NguyenTanTien
 {
     public class Lion : Animal
     {
-        public Lion(string Name, byte Age, string Species) : base(Name, Age, Species){}
+        public Lion(string Name, byte Age, string Species) : base(Name, Age, "Lion"){}
 
         public override void makeSound()
         {

@@ -11,7 +11,7 @@ namespace NguyenTanTien
     {
         private string name;
         private byte age;
-        private string species;
+        protected string species;
 
         public void SetName(string Name)
         {
@@ -34,16 +34,6 @@ namespace NguyenTanTien
             return age;
         }
 
-        public void SetSpecies(string Species)
-        {
-            this.species = string.IsNullOrEmpty(Species) ? Species : this.name;
-        }
-
-
-        public string GetSpecies(string Species)
-        {
-            return species;
-        }
 
         protected Animal(string Name, byte Age, string Species)
         {
