@@ -12,7 +12,7 @@ namespace NguyenTanTien
 
         public void eatLeaves()
         {
-            Console.WriteLine($"{getName()} is eating leaves...");
+            Console.WriteLine($"{this.Name} is eating leaves...");
         }
 
         public override void makeSound()

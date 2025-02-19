@@ -11,6 +11,7 @@ namespace NguyenTanTien
     {
         private string name;
         private ushort age;
+
         protected string species;
 
         protected Animal(string name, ushort age, string species)
@@ -20,17 +21,34 @@ namespace NguyenTanTien
             this.species = species;
         }
 
-        public void setName(string name) => this.name = string.IsNullOrEmpty(name) ? this.name : name;
-        public string getName() => name;
+        public string Name
+        {
+            get { return this.name; }
+            set { this.name = string.IsNullOrEmpty(value) ? this.name : value; }
+        }
 
-        public void setAge(ushort age) => this.age = (age < 1) ? (ushort)1 : age;
-        public ushort getAge() => age;
+        public ushort Age
+        {
+            get { return this.age; }
+            set { this.age = (value < 1) ? this.age : (ushort)value; }
+        }
 
-        public string getSpecies() => species;
+        public string Species
+        {
+            get { return this.species; }
+            set { }
+        }
+
+        //public void setAge(ushort age) => this.age = (age < 1) ? (ushort)1 : age;
+        //public void setName(string name) => this.name = string.IsNullOrEmpty(name) ? this.name : name;
+        
+        
+        //public ushort getAge() => age;
+        //public string getName() => name;
+        //public string getSpecies() => species;
 
 
         public abstract void makeSound();
-
         public virtual string showInfo() => $"Name: {name}, Age: {age}, Species: {species}";
     }
 

@@ -12,7 +12,7 @@ namespace NguyenTanTien
 
         public void climbTree()
         {
-            Console.WriteLine($"{getName()} is climbing a tree...");
+            Console.WriteLine($"{this.Name} is climbing a tree...");
         }
 
         public override void makeSound()

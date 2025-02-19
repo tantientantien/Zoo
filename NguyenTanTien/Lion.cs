@@ -12,7 +12,7 @@ namespace NguyenTanTien
 
         public void Hunt()
         {
-            Console.WriteLine($"{getName()} is hunting...");
+            Console.WriteLine($"{this.Name} is hunting...");
         }
 
         public override void makeSound()

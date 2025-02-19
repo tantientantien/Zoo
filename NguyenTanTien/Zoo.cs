@@ -31,15 +31,15 @@ namespace NguyenTanTien
         {
             addNewAnimal?.Invoke(this, new AddEventArgs
             {
-                Notification = $"A new animal was added: {animal.getName()} ({animal.getSpecies()})",
+                Notification = $"A new animal was added: {animal.Name} ({animal.Species})",
             });
         }
 
         public List<Animal> getAnimals(int? age = null, string species = null)
         {
             return animals.Where(a =>
-                (!age.HasValue || a.getAge() >= age.Value) &&
-                (string.IsNullOrEmpty(species) || a.getSpecies().Equals(species, StringComparison.OrdinalIgnoreCase))
+                (!age.HasValue || a.Age >= age.Value) &&
+                (string.IsNullOrEmpty(species) || a.Species.Equals(species, StringComparison.OrdinalIgnoreCase))
             ).ToList();
         }
     }
@@ -56,4 +56,6 @@ namespace NguyenTanTien
             Console.WriteLine(e.Notification);
         }
     }
+
+
 }

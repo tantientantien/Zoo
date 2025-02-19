@@ -42,8 +42,12 @@ namespace NguyenTanTien
             zoo.addAnimal(new Elephant("alice", 7));
             zoo.addAnimal(new Monkey("zara", 4));
 
+            Console.WriteLine();
 
-            var result = zoo.getAnimals(age: 5);
+            var result = zoo.getAnimals(age: 5, species: "Lion");
+
+            result[0].Age = 0;
+
             foreach (var animal in result)
             {
                 Console.WriteLine(animal.showInfo());
