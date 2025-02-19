@@ -12,7 +12,7 @@ namespace NguyenTanTien
         private string name;
         private ushort age;
 
-        protected string species;
+        public string species { get; protected set; }
 
         protected Animal(string name, ushort age, string species)
         {
@@ -33,16 +33,10 @@ namespace NguyenTanTien
             set { this.age = (value < 1) ? this.age : (ushort)value; }
         }
 
-        public string Species
-        {
-            get { return this.species; }
-            set { }
-        }
-
         //public void setAge(ushort age) => this.age = (age < 1) ? (ushort)1 : age;
         //public void setName(string name) => this.name = string.IsNullOrEmpty(name) ? this.name : name;
-        
-        
+
+
         //public ushort getAge() => age;
         //public string getName() => name;
         //public string getSpecies() => species;

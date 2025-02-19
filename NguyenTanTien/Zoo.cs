@@ -31,7 +31,7 @@ namespace NguyenTanTien
         {
             addNewAnimal?.Invoke(this, new AddEventArgs
             {
-                Notification = $"A new animal was added: {animal.Name} ({animal.Species})",
+                Notification = $"A new animal was added: {animal.Name} ({animal.species})",
             });
         }
 
@@ -39,7 +39,7 @@ namespace NguyenTanTien
         {
             return animals.Where(a =>
                 (!age.HasValue || a.Age >= age.Value) &&
-                (string.IsNullOrEmpty(species) || a.Species.Equals(species, StringComparison.OrdinalIgnoreCase))
+                (string.IsNullOrEmpty(species) || a.species.Equals(species, StringComparison.OrdinalIgnoreCase))
             ).ToList();
         }
     }

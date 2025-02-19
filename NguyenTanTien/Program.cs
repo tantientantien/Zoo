@@ -45,9 +45,6 @@ namespace NguyenTanTien
             Console.WriteLine();
 
             var result = zoo.getAnimals(age: 5, species: "Lion");
-
-            result[0].Age = 0;
-
             foreach (var animal in result)
             {
                 Console.WriteLine(animal.showInfo());
