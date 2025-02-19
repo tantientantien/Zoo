@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,23 +33,70 @@ namespace NguyenTanTien
             //animal.makeSound();
             //((Monkey)animal).climbTree();
 
-            Zoo zoo = new Zoo();
-            ZooMonitor monitor = new ZooMonitor();
-            monitor.Subscribe(zoo);
 
 
-            zoo.addAnimal(new Lion("bob", 12));
-            zoo.addAnimal(new Lion("zoe", 5));
-            zoo.addAnimal(new Elephant("alice", 7));
-            zoo.addAnimal(new Monkey("zara", 4));
 
-            Console.WriteLine();
+            //using adapter pattern to write and read animal data to json file
 
-            var result = zoo.getAnimals(age: 5, species: "Lion");
-            foreach (var animal in result)
+            //IAnimalDataAdapter animalAdapter = new JsonAnimalAdapter();
+            //Animal animalToSave = new Lion("Simba", 8);
+            //string filePath = Path.Combine(Directory.GetCurrentDirectory(), "data.json");
+            //animalAdapter.Save(animalToSave, filePath);
+            //Console.WriteLine($"Animal data saved to: {filePath}");
+
+            //Animal loadedAnimal = animalAdapter.Load(filePath);
+            //Console.WriteLine("Loaded Animal Info:");
+            //Console.WriteLine(loadedAnimal.showInfo());
+
+
+
+            try
             {
-                Console.WriteLine(animal.showInfo());
-                Console.WriteLine(animal.getAnimalType());
+                Zoo zoo = new Zoo();
+                ZooMonitor monitor = new ZooMonitor();
+                monitor.Subscribe(zoo);
+
+                IAnimalDataAdapter animalAdapter = new JsonAnimalAdapter();
+                string filePath = Path.Combine(Directory.GetCurrentDirectory(), "data.json");
+
+
+                zoo.addAnimal(new Lion("Bob", 12));
+                zoo.addAnimal(new Lion("Zoe", 5));
+                zoo.addAnimal(new Elephant("Alice", 7));
+                zoo.addAnimal(new Monkey("Zara", 4));
+                zoo.addAnimal(new Monkey("Simba", 8));
+
+                Console.WriteLine("\nFiltered Animals:");
+                var result = zoo.getAnimals(age: 5, species: "Lion");
+
+                foreach (var animal in result)
+                {
+                    Console.WriteLine($"{animal.showInfo()} ---> With type: {animal.getAnimalType()}");
+                }
+
+
+                //Console.WriteLine("\nSaving Animals to JSON...");
+                //animalAdapter.Save(zoo.getAnimals(), filePath);
+
+                Console.WriteLine("\nLoading Animals from JSON...");
+                var loadedAnimals = animalAdapter.Load(filePath);
+
+                if (loadedAnimals != null && loadedAnimals.Count > 0)
+                {
+                    Console.WriteLine("\nLoaded Animal List:");
+                    foreach (var animal in loadedAnimals)
+                    {
+                        Console.WriteLine(animal.showInfo());
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No animals loaded from JSON.");
+                }
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
     }

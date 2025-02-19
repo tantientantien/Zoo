@@ -56,6 +56,4 @@ namespace NguyenTanTien
             Console.WriteLine(e.Notification);
         }
     }
-
-
 }

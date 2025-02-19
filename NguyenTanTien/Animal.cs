@@ -53,5 +53,4 @@ namespace NguyenTanTien
             return animal?.GetType().Name ?? "Unknown";
         }
     }
-
 }
